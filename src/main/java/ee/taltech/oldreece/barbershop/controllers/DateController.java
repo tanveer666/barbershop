@@ -9,8 +9,8 @@ public class DateController {
 }
 
 /* TODO
-* Add get to show all available timeslots
-* Add post to add new timeslow
+* Add get to show all available time slots
+* Add post to add new time slot
 * Add put to update
 * Add delete to delete (by id)
  */

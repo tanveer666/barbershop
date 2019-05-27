@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class indexController {
+public class IndexController {
     @GetMapping
     public String greeting() {
         return "Welcome to Reece's Hair and Facial Studio";

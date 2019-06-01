@@ -1,6 +1,7 @@
 package ee.taltech.oldreece.barbershop.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@NoArgsConstructor
 public class ReservationDate {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,4 +30,11 @@ public class ReservationDate {
 
     @Getter @Setter
     private Long stylistID;
+
+    public ReservationDate(LocalDate date, LocalTime time, boolean isTaken, Long id) {
+        stylistID = id;
+        reservationDate = date;
+        reservationTime = time;
+        isTakenByCustomer = isTaken;
+    }
 }

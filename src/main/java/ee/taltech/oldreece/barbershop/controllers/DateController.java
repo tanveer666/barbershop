@@ -1,16 +1,38 @@
 package ee.taltech.oldreece.barbershop.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ee.taltech.oldreece.barbershop.model.ReservationDate;
+import ee.taltech.oldreece.barbershop.service.DateService;
+import ee.taltech.oldreece.barbershop.service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/date")
 @RestController
 public class DateController {
-}
+    @Autowired
+    private DateService dateService;
 
-/* TODO
-* Add get to show all available time slots
-* Add post to add new time slot
-* Add put to update
-* Add delete to delete (by id)
- */
+    @GetMapping
+    public List<ReservationDate> showAllDates() {
+        return dateService.getAllDates();
+    }
+
+    @PostMapping
+    public boolean addADate(@RequestBody ReservationDate reservationDate) {
+        return dateService.addADate(reservationDate);
+    }
+
+    @PutMapping
+    public boolean updateADate(@RequestBody ReservationDate reservationDate) {
+        return dateService.updateADate(reservationDate);
+    }
+
+    @DeleteMapping("{id}")
+    public boolean deleteADatebyID(@PathVariable Long id) {
+        return dateService.removeDateByID(id);
+    }
+
+}

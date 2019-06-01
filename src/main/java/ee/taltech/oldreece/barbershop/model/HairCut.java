@@ -21,6 +21,7 @@ public class HairCut {
     private Double hairCutPrice;
 
 
+
     public HairCut(String name, Double price) {
         hairCutName = name;
         hairCutPrice = price;

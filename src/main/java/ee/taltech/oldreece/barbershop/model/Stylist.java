@@ -17,6 +17,8 @@ public class Stylist {
     @Getter @Setter @Column(length = 60)
     private String stylistName;
 
+
+
     public Stylist (String name) {
         stylistName = name;
     }

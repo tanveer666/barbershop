@@ -31,6 +31,8 @@ public class ReservationDate {
     @Getter @Setter
     private Long stylistID;
 
+
+
     public ReservationDate(LocalDate date, LocalTime time, boolean isTaken, Long id) {
         stylistID = id;
         reservationDate = date;

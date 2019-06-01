@@ -1,16 +1,44 @@
 package ee.taltech.oldreece.barbershop.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ee.taltech.oldreece.barbershop.model.HairCut;
+import ee.taltech.oldreece.barbershop.service.HairCutService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/haircut")
 public class HairCutController {
-}
+    @Autowired
+    HairCutService hairCutService;
 
-/* TODO
-* Add get mapping to show all available haircuts and other services.
-* Add post mapping to add new services
-* Add put mapping to update existing services
-* Add delete mapping to delete services (by haircutID)
- */
+    @GetMapping
+    public List<HairCut> getAllHairCut() {
+        return hairCutService.showAllHairCut();
+    }
+
+    @GetMapping("{id}")
+    public HairCut getHairCutByID(@PathVariable Long id) {
+        return hairCutService.getHairCutbyID(id);
+    }
+
+    @PostMapping
+    public boolean saveHairCut(@RequestBody HairCut hairCut) {
+        hairCutService.saveAHairCut(hairCut);
+        return true;
+    }
+
+    @PutMapping
+    public boolean updateHairCut(@RequestBody HairCut hairCut) {
+        hairCutService.updateAHairCut(hairCut);
+        return true;
+    }
+
+    @DeleteMapping("{id}")
+    public boolean deleteHairCut(@PathVariable Long id) {
+        hairCutService.deleteHairCutByID(id);
+        return true;
+    }
+
+}

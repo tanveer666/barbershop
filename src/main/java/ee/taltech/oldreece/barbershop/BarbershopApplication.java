@@ -45,7 +45,6 @@ public class BarbershopApplication {
             stylistRepo.save( new Stylist("Jack Ryan"));
             stylistRepo.save(new Stylist("Viktor Reznov"));
             stylistRepo.save(new Stylist("Soap Mactavish"));
-
         };
 
 

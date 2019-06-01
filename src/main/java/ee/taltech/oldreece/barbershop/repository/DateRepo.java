@@ -18,10 +18,10 @@ public interface DateRepo extends JpaRepository<ReservationDate,Long> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE ReservationDate SET isTakenByCustomer = true WHERE id = :inputID ;",nativeQuery = true)
-    boolean reserveADate(@Param(":inputID") Long id);
+    boolean reserveADate(@Param("inputID") Long id);
 
     @Query(value = "SELECT isTakenByCustomer FROM ReservationDate WHERE id = :inputID ;",nativeQuery = true)
-    boolean isDateTaken(@Param(":inputID")Long id);
+    boolean isDateTaken(@Param("inputID")Long id);
 
 
 }

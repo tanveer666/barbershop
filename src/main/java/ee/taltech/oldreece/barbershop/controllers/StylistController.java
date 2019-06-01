@@ -1,16 +1,36 @@
 package ee.taltech.oldreece.barbershop.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ee.taltech.oldreece.barbershop.model.Stylist;
+import ee.taltech.oldreece.barbershop.service.StylistService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("stylist")
 public class StylistController {
-}
+    @Autowired
+    StylistService stylistService;
 
-/* TODO
-* Add get mapping to get list of stylist
-* Add post mapping to add stylist
-* add put mapping to update "
-* add delete mapping to delete "(by id)
- */
+    @GetMapping
+    public List<Stylist> getAllStylist() {
+        return stylistService.getAllStylist();
+    }
+
+    @PostMapping
+    public boolean addAStylist(@RequestBody Stylist stylist) {
+        return stylistService.addAStylist(stylist);
+    }
+
+    @DeleteMapping("{id}")
+    public boolean deleteAStylistbyID(@PathVariable Long id) {
+        return stylistService.deleteAStylistByID(id);
+    }
+
+    @PutMapping
+    public boolean updateAStylist(Stylist stylist) {
+        return stylistService.updateAStylist(stylist);
+    }
+
+}

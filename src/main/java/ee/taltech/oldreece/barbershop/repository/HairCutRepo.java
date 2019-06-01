@@ -8,5 +8,3 @@ import org.springframework.stereotype.Repository;
 public interface HairCutRepo extends JpaRepository<HairCut,Long> {
 }
 
-
-//Maybe add queries if JPA does not offer existing methods

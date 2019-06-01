@@ -46,8 +46,8 @@ public class DateService {
         return dateRepo.getAllFreeDates();
     }
 
-    public boolean reserveADate(Long id) {
-        return dateRepo.reserveADate(id);
+    public void reserveADate(Long id) {
+        dateRepo.reserveADate(id);
     }
 
     public boolean isDateTaken(Long id) {

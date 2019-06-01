@@ -7,7 +7,9 @@ import ee.taltech.oldreece.barbershop.service.DateService;
 import ee.taltech.oldreece.barbershop.service.HairCutService;
 import ee.taltech.oldreece.barbershop.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,8 +25,17 @@ public class CustomerController {
 
 
     @PostMapping
-    public boolean reserveATimeSlot(@RequestBody Customer customer) {
-        return reservationService.reserveADate(customer);
+    public double reserveATimeSlot(@RequestBody Customer customer) throws ResponseStatusException {
+        Long hairCutID = customer.getHairCutID();
+        Long dateID = customer.getReservationDateID();
+
+        if (!dateService.isDateTaken(dateID)) {
+            reservationService.reserveADate(customer);
+            dateService.reserveADate(dateID);
+            return hairCutService.getHairCutbyID(hairCutID).getHairCutPrice();
+
+        }
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/dates")
@@ -53,7 +64,7 @@ public class CustomerController {
     }
 
     @PutMapping("/admin")
-    public boolean updateACustomer( @RequestBody Customer customer) {
+    public boolean updateACustomer(@RequestBody Customer customer) {
         return reservationService.updateCustomer(customer);
     }
 }

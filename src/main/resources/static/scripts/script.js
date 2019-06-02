@@ -29,7 +29,6 @@ function postData(body) {
 function display(reqBody, id, objProperties) {
 
     let size = objProperties.length;
-    console.log(size);
     $(id).text("");
     for (let i in reqBody) {
 
@@ -39,13 +38,9 @@ function display(reqBody, id, objProperties) {
         for(let j = 0; j < size; j++) {
            let key = objProperties[j];
            str = "" + key + ":  &emsp; " + obj[key] +" &emsp; " ;
-           console.log( obj[key] );
            $(id).append(str);
        }
-
-
         $(id).append("<br>");
-        console.log("What in the name of fuck");
     }
 }
 
@@ -54,7 +49,7 @@ function display(reqBody, id, objProperties) {
 
 function fetchData () {
     let id1 = "#haircuts";
-    let keyArr = ["hairCutName","hairCutPrice"];
+    let keyArr = ["hairCutPrice","hairCutName"];
     getData("/service", id1, keyArr);
 
     let id2 = "#freeDates";
@@ -69,7 +64,6 @@ $(document).ready(fetchData);
 
 /* TAKES DATA FROM THE FORM, CREATES A CUSTOMER OBJECT AND SENDS THE POST REQUEST */
 $("#submit").click(function (event) {
-    console.log(event);
     event.preventDefault();
 
     customer.name = $("#name").val();
@@ -77,7 +71,6 @@ $("#submit").click(function (event) {
     customer.reservationDateID = $("#date").val();
     customer.customerID = null;
     customer.phoneNum = $("#phoneNum").val();
-    console.log((customer));
     let responseBody = JSON.stringify(customer);
     postData(responseBody);
 

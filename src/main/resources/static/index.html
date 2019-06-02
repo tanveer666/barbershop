@@ -6,5 +6,44 @@
 </head>
 <body>
 <h1> WWelcome to Reece's Hair and Facial Studio</h1>
+
+<div class="data">
+    <h3> Available dates:<br> <span id="freeDates"> </span> </h3> <br>
+    <h3> Available times:<br> <span id="freeTimes"> </span> </h3> <br>
+    <h3> Offered services:<br> <span id="haircuts"> </span> </h3>
+</div>
+
+
+<div class="form">
+    <h2> Book a Date!</h2>
+    <form id="cust">
+        <label for="first"> Name</label>
+        <input type="Text" id="name"> <br>
+        <label for="phoneNum"> Phone</label>
+        <input type="number" id="phoneNum"> <br>
+        <label for="service"> Service </label>
+        <select id="service">
+            <option value="5">Hair Cut</option>
+            <option value="6">Shave</option>
+            <option value="7">Hair Cut + Shave</option>
+        </select>
+        <br>
+        <label for="date"> Date ID</label>
+        <input type="number" id="date"> <br>
+
+        <input type="submit" value="submit" id="submit">
+    </form>
+</div>
+
+<div class="invoice">
+    <h1 id="price">Your fee is: </h1>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+
+
 </body>
 </html>
